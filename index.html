@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .box-content {
+        border-radius: 16px;
+        font-size: 18px;
+        font-weight: 500;
+        color: #31456a;
+        background-color: #e3edf7;
+        box-shadow: inset -3px -3px 7px #fff, inset 2px 2px 5px #88a5bf61;
+        opacity: 0.7;
+        margin: 20px;
+        resize: both;
+        overflow: auto;
+        border-radius: 6px;
+        border: 2px solid rgba(66 118 255);
+        box-shadow: rgb(66 118 255 / 0.14) 0 0.875rem 3.125rem;
+      }
+      .scrollbar-custom-wrapper {
+        position: relative;
+        height: fit-content;
+      }
+      .scrollbar-custom-scrolller {
+        overflow: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        scroll-behavior: auto !important;
+
+        /* width: 16rem; */
+        height: 16rem;
+      }
+      .scrollbar-custom-content {
+        display: block;
+      }
+      .scrollbar-custom-track {
+        transition: opacity 0.15s, visibility 0.15s, top 0.15s, right 0.15s,
+          bottom 0.15s, left 0.15s;
+        pointer-events: none;
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+      }
+      .scrollbar-custom-thumb {
+        --os-handle-border: none;
+        --os-handle-border-radius: 10px;
+        --os-handle-bg: rgba(0, 0, 0, 0.44);
+        border: var(--os-handle-border);
+        border-radius: var(--os-handle-border-radius);
+        background: var(--os-handle-bg);
+      }
+      .scrollbar-custom-thumb-x {
+        width: 20%;
+        height: 10px;
+      }
+      .scrollbar-custom-thumb-y {
+        height: 20%;
+      }
+      .scrollbar-custom-track-x {
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 10px;
+      }
+      .scrollbar-custom-track-y {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 10px;
+      }
+
+      .scrollbar-custom-visible {
+        opacity: 1;
+        visibility: visible;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box-content">
+      <div id="target" data-scrollbar-custom>
+        <div class="scrollbar-custom-wrapper">
+          <div class="scrollbar-custom-scrolller" style="height: 40vh">
+            <div class="scrollbar-custom-content">
+              <p>---------------------start----------------------</p>
+              <p>
+                Morbi vel purus pretium, ullamcorper elit id, porttitor justo.
+                Donec ut varius lacus, ut aliquam turpis. Pellentesque
+                condimentum nec orci ut suscipit. Cras at mi sodales, tincidunt
+                risus eget, tristique magna. Proin auctor sollicitudin arcu
+                vitae convallis. Morbi aliquet sapien ut velit vehicula
+                convallis. Vivamus mi metus, finibus vel sollicitudin quis,
+                pulvinar nec nunc. Vestibulum ornare justo vel ex condimentum
+                dignissim ac nec dolor. Pellentesque et diam et leo cursus
+                interdum. Integer tincidunt massa justo, a efficitur libero
+                vehicula id. Cras ex lacus, viverra ut orci nec, ultrices porta
+                ipsum. Integer in placerat magna. Duis semper tempus dui, ac
+                rutrum diam fringilla eu. Suspendisse purus massa, bibendum eu
+                aliquet in, convallis sed augue. Proin finibus auctor elit, in
+                pharetra leo interdum a.
+              </p>
+              <p>
+                Vestibulum risus risus, tempus nec aliquet sit amet, gravida sed
+                ipsum. In hac habitasse platea dictumst. In tincidunt nec mi id
+                feugiat. Pellentesque luctus libero eget quam efficitur, at
+                cursus purus cursus. In at dolor velit. Duis tristique urna eget
+                blandit porttitor. In neque dolor, pharetra in risus id, egestas
+                imperdiet leo. Duis nisl dolor, vestibulum eget fringilla non,
+                vestibulum quis nisl. Vestibulum ante ipsum primis in faucibus
+                orci luctus et ultrices posuere cubilia Curae; Curabitur cursus
+                arcu sed rutrum faucibus. Maecenas vel egestas nisi. Vivamus
+                gravida lectus sed imperdiet interdum. Integer vestibulum eros
+                eget justo pharetra, eget lobortis velit ultrices. Curabitur
+                sagittis non metus eget porta. Morbi nec ligula et massa cursus
+                posuere a quis ligula. In hac habitasse platea dictumst.Nulla
+                sit amet orci at nunc efficitur tempus in nec enim. Vestibulum
+                ante ipsum primis in faucibus orci luctus et ultrices posuere
+                cubilia Curae; Nunc viverra, arcu a malesuada molestie, sapien
+                lacus rhoncus mi, sit amet posuere nisl eros eget turpis. Donec
+                rutrum diam sapien, quis luctus nisi facilisis non. Aliquam a
+                tellus id dolor congue lacinia. Aenean eu lorem nec libero
+                accumsan feugiat quis id erat. Pellentesque condimentum ut purus
+                egestas varius. Nullam non consequat enim, quis dapibus sem.
+                Curabitur hendrerit non magna in pellentesque. Nam ac malesuada
+                lacus. Mauris vulputate, mauris non lacinia volutpat, ipsum nisl
+                pellentesque tellus, sollicitudin feugiat dui lorem eget justo.
+                Pellentesque ornare nulla sed arcu ultricies, eu pulvinar dolor
+                posuere. Cras ante odio, luctus sed tellus nec, maximus
+                fringilla erat. Fusce auctor turpis a nibh egestas, vel iaculis
+                neque aliquet.
+              </p>
+              <p>
+                Nulla nulla odio, ullamcorper nec lectus id, eleifend feugiat
+                lorem. Praesent vulputate lacus nisi, a eleifend ex mollis eget.
+                Fusce tempus convallis finibus. In sed sapien non mauris
+                pellentesque semper at vel ante. Maecenas ut libero a tortor
+                mollis pretium. Mauris laoreet nulla risus, non fermentum sapien
+                fringilla pulvinar. Ut et mauris rhoncus, viverra orci ut,
+                vulputate dui. Praesent volutpat, enim vel congue egestas, purus
+                tortor pulvinar lorem, eget venenatis ex lorem vitae neque.
+                Donec rutrum nulla quis odio fringilla, ac fringilla velit
+                iaculis. Curabitur sit amet ante ut mi sagittis luctus sit amet
+                pretium leo. Proin nec malesuada velit. Ut dictum orci at sapien
+                suscipit, at mattis tortor vehicula. Nulla dui magna, venenatis
+                nec imperdiet in, venenatis quis leo. Proin vel pulvinar arcu.
+                In non ullamcorper tellus. Etiam dapibus, nibh nec efficitur
+                blandit, erat lacus placerat dui, id vehicula quam ex nec eros.
+              </p>
+              <p>
+                Vestibulum risus risus, tempus nec aliquet sit amet, gravida sed
+                ipsum. In hac habitasse platea dictumst. In tincidunt nec mi id
+                feugiat. Pellentesque luctus libero eget quam efficitur, at
+                cursus purus cursus. In at dolor velit. Duis tristique urna eget
+                blandit porttitor. In neque dolor, pharetra in risus id, egestas
+                imperdiet leo. Duis nisl dolor, vestibulum eget fringilla non,
+                vestibulum quis nisl. Vestibulum ante ipsum primis in faucibus
+                orci luctus et ultrices posuere cubilia Curae; Curabitur cursus
+                arcu sed rutrum faucibus. Maecenas vel egestas nisi. Vivamus
+                gravida lectus sed imperdiet interdum. Integer vestibulum eros
+                eget justo pharetra, eget lobortis velit ultrices. Curabitur
+                sagittis non metus eget porta. Morbi nec ligula et massa cursus
+                posuere a quis ligula. In hac habitasse platea dictumst.Nulla
+                sit amet orci at nunc efficitur tempus in nec enim. Vestibulum
+                ante ipsum primis in faucibus orci luctus et ultrices posuere
+                cubilia Curae; Nunc viverra, arcu a malesuada molestie, sapien
+                lacus rhoncus mi, sit amet posuere nisl eros eget turpis. Donec
+                rutrum diam sapien, quis luctus nisi facilisis non. Aliquam a
+                tellus id dolor congue lacinia. Aenean eu lorem nec libero
+                accumsan feugiat quis id erat. Pellentesque condimentum ut purus
+                egestas varius. Nullam non consequat enim, quis dapibus sem.
+                Curabitur hendrerit non magna in pellentesque. Nam ac malesuada
+                lacus. Mauris vulputate, mauris non lacinia volutpat, ipsum nisl
+                pellentesque tellus, sollicitudin feugiat dui lorem eget justo.
+                Pellentesque ornare nulla sed arcu ultricies, eu pulvinar dolor
+                posuere. Cras ante odio, luctus sed tellus nec, maximus
+                fringilla erat. Fusce auctor turpis a nibh egestas, vel iaculis
+                neque aliquet.
+              </p>
+              <p>
+                Vestibulum risus risus, tempus nec aliquet sit amet, gravida sed
+                ipsum. In hac habitasse platea dictumst. In tincidunt nec mi id
+                feugiat. Pellentesque luctus libero eget quam efficitur, at
+                cursus purus cursus. In at dolor velit. Duis tristique urna eget
+                blandit porttitor. In neque dolor, pharetra in risus id, egestas
+                imperdiet leo. Duis nisl dolor, vestibulum eget fringilla non,
+                vestibulum quis nisl. Vestibulum ante ipsum primis in faucibus
+                orci luctus et ultrices posuere cubilia Curae; Curabitur cursus
+                arcu sed rutrum faucibus. Maecenas vel egestas nisi. Vivamus
+                gravida lectus sed imperdiet interdum. Integer vestibulum eros
+                eget justo pharetra, eget lobortis velit ultrices. Curabitur
+                sagittis non metus eget porta. Morbi nec ligula et massa cursus
+                posuere a quis ligula. In hac habitasse platea dictumst.Nulla
+                sit amet orci at nunc efficitur tempus in nec enim. Vestibulum
+                ante ipsum primis in faucibus orci luctus et ultrices posuere
+                cubilia Curae; Nunc viverra, arcu a malesuada molestie, sapien
+                lacus rhoncus mi, sit amet posuere nisl eros eget turpis. Donec
+                rutrum diam sapien, quis luctus nisi facilisis non. Aliquam a
+                tellus id dolor congue lacinia. Aenean eu lorem nec libero
+                accumsan feugiat quis id erat. Pellentesque condimentum ut purus
+                egestas varius. Nullam non consequat enim, quis dapibus sem.
+                Curabitur hendrerit non magna in pellentesque. Nam ac malesuada
+                lacus. Mauris vulputate, mauris non lacinia volutpat, ipsum nisl
+                pellentesque tellus, sollicitudin feugiat dui lorem eget justo.
+                Pellentesque ornare nulla sed arcu ultricies, eu pulvinar dolor
+                posuere. Cras ante odio, luctus sed tellus nec, maximus
+                fringilla erat. Fusce auctor turpis a nibh egestas, vel iaculis
+                neque aliquet.
+              </p>
+              <p>
+                Morbi vel purus pretium, ullamcorper elit id, porttitor justo.
+                Donec ut varius lacus, ut aliquam turpis. Pellentesque
+                condimentum nec orci ut suscipit. Cras at mi sodales, tincidunt
+                risus eget, tristique magna. Proin auctor sollicitudin arcu
+                vitae convallis. Morbi aliquet sapien ut velit vehicula
+                convallis. Vivamus mi metus, finibus vel sollicitudin quis,
+                pulvinar nec nunc. Vestibulum ornare justo vel ex condimentum
+                dignissim ac nec dolor. Pellentesque et diam et leo cursus
+                interdum. Integer tincidunt massa justo, a efficitur libero
+                vehicula id. Cras ex lacus, viverra ut orci nec, ultrices porta
+                ipsum. Integer in placerat magna. Duis semper tempus dui, ac
+                rutrum diam fringilla eu. Suspendisse purus massa, bibendum eu
+                aliquet in, convallis sed augue. Proin finibus auctor elit, in
+                pharetra leo interdum a.
+              </p>
+              <p>
+                Nunc a luctus tortor. Duis maximus urna quis est commodo
+                sodales. Sed sit amet accumsan purus, eget pellentesque est. In
+                cursus metus ipsum, in condimentum ante molestie ac. Donec sit
+                amet pulvinar turpis. Suspendisse elementum, ex sed lobortis
+                fermentum, urna ex efficitur turpis, at consequat leo tellus in
+                augue. Sed et varius ante. Phasellus iaculis, diam id
+                ullamcorper semper, mi ipsum interdum ipsum, non fermentum est
+                ligula sed mi. Vestibulum ornare interdum nulla, a convallis
+                dolor molestie non. Curabitur convallis scelerisque augue quis
+                fringilla. Aenean gravida libero nec eros convallis, vel
+                lobortis sapien bibendum. Quisque faucibus lacus id purus
+                placerat dapibus. Praesent pretium, tellus a dictum suscipit, ex
+                leo scelerisque augue, vitae semper libero erat vel massa.
+              </p>
+              <p>
+                Nam sodales sem ut turpis porttitor, sed condimentum tortor
+                iaculis. Quisque consectetur facilisis dui. In eu turpis
+                euismod, lobortis mauris non, rhoncus risus. Aliquam erat
+                volutpat. Nam fermentum interdum purus in rutrum. Duis tortor
+                sapien, feugiat sit amet libero in, ornare suscipit neque.
+                Vivamus sed sodales lorem. Donec quis mauris at elit tempor
+                rhoncus. Class aptent taciti sociosqu ad litora torquent per
+                conubia nostra, per inceptos himenaeos. Nunc sit amet commodo
+                magna, ac sollicitudin lectus. In accumsan arcu diam, in euismod
+                elit molestie eget. Aenean dui metus, sagittis a ex vitae,
+                pretium pharetra mauris.
+              </p>
+              <p>
+                Nam sodales sem ut turpis porttitor, sed condimentum tortor
+                iaculis. Quisque consectetur facilisis dui. In eu turpis
+                euismod, lobortis mauris non, rhoncus risus. Aliquam erat
+                volutpat. Nam fermentum interdum purus in rutrum. Duis tortor
+                sapien, feugiat sit amet libero in, ornare suscipit neque.
+                Vivamus sed sodales lorem. Donec quis mauris at elit tempor
+                rhoncus. Class aptent taciti sociosqu ad litora torquent per
+                conubia nostra, per inceptos himenaeos. Nunc sit amet commodo
+                magna, ac sollicitudin lectus. In accumsan arcu diam, in euismod
+                elit molestie eget. Aenean dui metus, sagittis a ex vitae,
+                pretium pharetra mauris.
+              </p>
+              <p>
+                Aliquam libero odio, feugiat in mattis eu, sagittis a eros.
+                Vivamus quis lacus lectus. Vestibulum mi diam, pulvinar id neque
+                et, porttitor aliquam magna. Nullam finibus ex ex, quis volutpat
+                odio scelerisque sed. Phasellus in felis semper, cursus erat eu,
+                interdum lorem. Quisque finibus quis elit eu semper. Etiam at
+                erat eleifend, mattis nisl in, molestie enim. Aliquam nec
+                tincidunt mauris.
+              </p>
+              <p>
+                Aenean tincidunt porttitor leo id sodales. Integer feugiat leo
+                rutrum mi euismod convallis. In auctor arcu eget ligula cursus,
+                vel gravida neque posuere. Donec ipsum enim, vulputate pulvinar
+                sagittis at, varius in nibh. Quisque quis leo non metus lobortis
+                euismod. Aenean et ultrices enim. Mauris posuere turpis eget
+                imperdiet vestibulum. Morbi imperdiet mi felis, at varius magna
+                pharetra vitae. Vestibulum at venenatis neque.
+              </p>
+              <p>---------------------end----------------------</p>
+            </div>
+          </div>
+
+          <div
+            class="scrollbar-custom-track scrollbar-custom-track-x scrollbar-custom-visible"
+          >
+            <div class="scrollbar-custom-thumb scrollbar-custom-thumb-x"></div>
+          </div>
+          <div
+            class="scrollbar-custom-track scrollbar-custom-track-y scrollbar-custom-visible"
+          >
+            <div class="scrollbar-custom-thumb scrollbar-custom-thumb-y"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      class Scrollbar {
+        el = null;
+        wrapperEl = null;
+        scrollerEl = null;
+        contentEl = null;
+        thumbY = null;
+        thumbX = null;
+
+        nativeMaxScrollTop = 0;
+        nativeMaxScrollLeft = 0;
+        maxScrollLeft = 0;
+        thumbSize = 50;
+
+        scrollerRect;
+        contentRect;
+        constructor(el) {
+          this.el = el;
+
+          this.initDOM();
+          this.updateMaxScrollDistance();
+          this.initListeners();
+        }
+        initDOM() {
+          this.wrapperEl = this.el.querySelector(".scrollbar-custom-wrapper");
+          this.scrollerEl = this.el.querySelector(
+            ".scrollbar-custom-scrolller"
+          );
+          this.contentEl = this.el.querySelector(".scrollbar-custom-content");
+          this.thumbY = this.el.querySelector(".scrollbar-custom-thumb-y");
+          this.thumbX = this.el.querySelector(".scrollbar-custom-thumb-x");
+        }
+
+        updateMaxScrollDistance() {
+          this.scrollerRect = this.scrollerEl.getBoundingClientRect();
+          this.contentrRect = this.contentEl.getBoundingClientRect();
+          this.nativeMaxScrollTop = Math.max(
+            (this.scrollerEl.scrollHeight - this.scrollerRect.height) | 0,
+            0
+          );
+          this.nativeMaxScrollLeft = Math.max(
+            (this.scrollerEl.scrollWidth - this.scrollerRect.width) | 0,
+            0
+          );
+        }
+
+        initListeners() {
+          this.scrollerEl.addEventListener("scroll", this.onScroll);
+          this.thumbX.addEventListener("scroll", this.onScroll);
+        }
+
+        getThumbSize() {
+          this.thumbSize = this.thumbY.getBoundingClientRect().height;
+        }
+        handleNativeScroll = () => {
+          this.updateMaxScrollDistance();
+          this.getThumbSize();
+          let maxScrollTop = this.scrollerRect.height - this.thumbSize;
+          this.thumbY.style.transform = `translate3d(0, ${
+            (this.scrollerEl.scrollTop / this.nativeMaxScrollTop) * maxScrollTop
+          }px, 0)`;
+        };
+        onScroll = () => {
+          console.log("log");
+
+          this.handleNativeScroll();
+        };
+      }
+
+      const targetEl = document.querySelector("[data-scrollbar-custom]");
+
+      const scrollbar = new Scrollbar(targetEl);
+    </script>
+  </body>
+</html>
